@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 手機 QR 測試 | 壽豐尋寶巴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #7cb342 0%, #aed581 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qr-display {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        .qr-code {
+            display: inline-block;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .spot-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #7cb342;
+            margin-top: 12px;
+        }
+
+        .code-text {
+            font-family: monospace;
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .instructions h3 {
+            font-size: 14px;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            color: #856404;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .test-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7cb342 0%, #aed581 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(124, 179, 66, 0.3);
+        }
+
+        .test-btn:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 24px 0;
+        }
+
+        .emoji {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 手機 QR 測試</h1>
+            <p>用手機相機掃描下面的 QR Code</p>
+        </div>
+
+        <!-- 測試 QR Code 1 -->
+        <div class="card">
+            <h2><span class="emoji">🚂</span> 測試 #1：壽豐火車站</h2>
+            <div class="qr-display">
+                <div class="qr-code" id="qr-1"></div>
+                <div class="spot-name">壽豐火車站</div>
+                <div class="code-text">SHOUFENG_SPOT_1</div>
+            </div>
+            <button class="test-btn" onclick="goToCheckin(1)">
+                前往打卡頁面測試
+            </button>
+        </div>
+
+        <!-- 測試 QR Code 2 -->
+        <div class="card">
+            <h2><span class="emoji">🏞️</span> 測試 #2：鯉魚潭</h2>
+            <div class="qr-display">
+                <div class="qr-code" id="qr-2"></div>
+                <div class="spot-name">鯉魚潭</div>
+                <div class="code-text">SHOUFENG_SPOT_13</div>
+            </div>
+            <button class="test-btn" onclick="goToCheckin(13)">
+                前往打卡頁面測試
+            </button>
+        </div>
+
+        <!-- 使用說明 -->
+        <div class="card">
+            <div class="instructions">
+                <h3>📋 測試步驟：</h3>
+                <ol>
+                    <li>點擊上方「前往打卡頁面測試」按鈕</li>
+                    <li>在打卡頁面點擊「掃描 QR Code」</li>
+                    <li>允許使用相機權限</li>
+                    <li>將手機相機對準上方的 QR Code</li>
+                    <li>等待自動識別並打卡</li>
+                </ol>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="instructions" style="background: #e8f5e9; border-left-color: #4caf50;">
+                <h3 style="color: #2e7d32;">💡 測試技巧：</h3>
+                <ol style="color: #2e7d32;">
+                    <li><strong>兩台裝置</strong>：用另一台裝置顯示 QR Code</li>
+                    <li><strong>螢幕截圖</strong>：截圖此頁面，用另一台裝置掃描</li>
+                    <li><strong>電腦螢幕</strong>：在電腦打開此頁面，手機掃描</li>
+                    <li><strong>列印</strong>：列印 QR Code 貼在景點現場</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        // 生成 QR Code
+        function generateQRCodes() {
+            // QR Code 1: 壽豐火車站
+            new QRCode(document.getElementById('qr-1'), {
+                text: 'SHOUFENG_SPOT_1',
+                width: 200,
+                height: 200,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // QR Code 2: 鯉魚潭
+            new QRCode(document.getElementById('qr-2'), {
+                text: 'SHOUFENG_SPOT_13',
+                width: 200,
+                height: 200,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // 前往打卡頁面
+        function goToCheckin(spotId) {
+            window.location.href = `checkin.html?id=${spotId}`;
+        }
+
+        // 頁面載入時生成 QR Code
+        window.addEventListener('DOMContentLoaded', generateQRCodes);
+    </script>
+</body>
+</html>
